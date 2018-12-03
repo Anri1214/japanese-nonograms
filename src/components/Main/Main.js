@@ -16,8 +16,8 @@ class Main extends Component {
    * @return {XML}
    */
   render () {
-    const path = process.env.NODE_ENV === 'development' ? '/' : '../';
-    
+    const path = process.env.NODE_ENV === 'development' ? '/' : '/japanese-nonograms/';
+
     return (
       <main className="jn-main">
         <div className="jn-content">
