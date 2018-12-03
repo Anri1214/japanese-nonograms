@@ -29,7 +29,7 @@ class Message extends Component {
         <h2
           className={
             `jn-message__title
-            jn-message__title--${message}`
+            jn-message__title--${ message }`
           }
         >
           { path.includes('game') && this.type[message] }

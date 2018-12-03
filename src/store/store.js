@@ -33,5 +33,5 @@ const create = () => {
   );
 };
 
-export const history = createHistory();
+export const history = createHistory({ basename: process.env.PUBLIC_URL });
 export const store = create();
