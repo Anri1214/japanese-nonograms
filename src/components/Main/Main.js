@@ -16,8 +16,6 @@ class Main extends Component {
    * @return {XML}
    */
   render () {
-    const path = process.env.NODE_ENV === 'development' ? '/' : '/japanese-nonograms/';
-
     return (
       <main className="jn-main">
         <div className="jn-content">
@@ -25,7 +23,7 @@ class Main extends Component {
           <div
             className="jn-container"
             style={{
-              background: `url(${ path }wallpaper.jpg)`
+              background: `url(${ process.env.PUBLIC_URL }wallpaper.jpg)`
             }}
           >
             <Switch>
