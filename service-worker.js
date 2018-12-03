@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/japanese-nonograms/precache-manifest.1724df9c436a8adcdba8f0dc84025f68.js"
+  "/japanese-nonograms/precache-manifest.b66e2cb76bf8739abedbb63f8f8b2815.js"
 );
 
 workbox.clientsClaim();
