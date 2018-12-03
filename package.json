@@ -67,6 +67,7 @@
   "scripts": {
     "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
     "predeploy": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
