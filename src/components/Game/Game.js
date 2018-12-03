@@ -140,7 +140,7 @@ class Game extends Component {
                   return (
                     <tr key={ index }>
                       <td
-                        style={{ minWidth: settings.width * 17 + 'px' }}
+                        style={{ minWidth: `${ settings.width * 17 }px` }}
                         className={
                           `jn-game-table__data
                           jn-game-table__data--row

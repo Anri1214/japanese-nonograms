@@ -16,16 +16,25 @@ class Main extends Component {
    * @return {XML}
    */
   render () {
+    const path = process.env.NODE_ENV === 'development' ? '/' : '../';
+    
     return (
       <main className="jn-main">
         <div className="jn-content">
           <Settings />
-          <Switch>
-            <Route exact path="/" render={ () => <Redirect to="/game" /> }/>
-            <Route exact path="/about" component={ About } />
-            <Route exact path="/help" component={ Help } />
-            <Route exact path="/game" component={ Game } />
-          </Switch>
+          <div
+            className="jn-container"
+            style={{
+              background: `url(${ path }wallpaper.jpg)`
+            }}
+          >
+            <Switch>
+              <Route exact path="/" render={ () => <Redirect to="/game" /> }/>
+              <Route exact path="/about" component={ About } />
+              <Route exact path="/help" component={ Help } />
+              <Route exact path="/game" component={ Game } />
+            </Switch>
+          </div>
           <Message />
         </div>
       </main>
