@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/japanese-nonograms/static/js/runtime~main.302f7128.js"
   },
   {
-    "revision": "3c35a80bdb96a4d8f7fd",
-    "url": "/japanese-nonograms/static/js/main.3c35a80b.chunk.js"
+    "revision": "7da709397ef54b3740e9",
+    "url": "/japanese-nonograms/static/js/main.7da70939.chunk.js"
   },
   {
     "revision": "fb63cc0325cfe8568025",
     "url": "/japanese-nonograms/static/js/1.fb63cc03.chunk.js"
   },
   {
-    "revision": "3c35a80bdb96a4d8f7fd",
-    "url": "/japanese-nonograms/static/css/main.ee69397b.chunk.css"
+    "revision": "7da709397ef54b3740e9",
+    "url": "/japanese-nonograms/static/css/main.dbcabaec.chunk.css"
   },
   {
-    "revision": "13c83f3e5376bc8990ffac7d1705b071",
+    "revision": "f667de2326d4f166648e8200dbc0b5b3",
     "url": "/japanese-nonograms/index.html"
   }
 ];
