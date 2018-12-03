@@ -1,0 +1,51 @@
+@import '../../stylesheets/constants';
+@import '../../stylesheets/mixins';
+
+.jn-settings {
+  @include flex();
+
+  background-image: $settings-gradient;
+  border-bottom: $app-border-size;
+  height: $settings-height;
+
+  &__item {
+    background-color: #000;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    height: 40px;
+    width: 120px;
+
+    &:first-child {
+      border-radius: $app-button-radius 0 0 $app-button-radius;
+    }
+
+    &:last-child {
+      border-radius: .0 $app-button-radius $app-button-radius 0;
+    }
+
+    &:hover {
+      background-color: #fff;
+      border: 1px solid #000;
+      color: #000;
+      font-size: $hover-font;
+      font-weight: bold;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: .5;
+    }
+
+    &--active {
+      color: $hover-color;
+      font-size: $hover-font;
+
+      &:hover {
+        background-color: $hover-color;
+        color: #000;
+      }
+    }
+  }
+}

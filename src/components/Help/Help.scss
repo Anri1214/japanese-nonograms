@@ -1,0 +1,13 @@
+@import '../../stylesheets/mixins';
+
+.jn-help {
+  &__info {
+    @include info(50%);
+
+    text-align: justify;
+
+    &--paragraph {
+      padding-right: 25px;
+    }
+  }
+}

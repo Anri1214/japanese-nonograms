@@ -1,0 +1,19 @@
+@import '../../stylesheets/constants';
+@import '../../stylesheets/mixins';
+
+.jn-about {
+  &__info {
+    @include info(35%);
+
+    text-align: center;
+
+    &--link {
+      color: #000;
+      font-weight: bold;
+
+      &:hover {
+        color: $hover-color;
+      }
+    }
+  }
+}

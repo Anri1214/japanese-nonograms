@@ -1,0 +1,99 @@
+@import '../../stylesheets/constants';
+@import '../../stylesheets/mixins';
+
+.jn-header {
+  background-color: $nav-background;
+
+  & .jn-navigator {
+    @include flex();
+
+    background-color: $app-background;
+    border-radius: 0 0 $app-border-radius $app-border-radius;
+    flex-direction: row;
+    height: $nav-height;
+
+    &__action {
+      width: $nav-item-width;
+    }
+
+    &__link {
+      padding-right: $nav-padding;
+      text-align: right;
+      width: $nav-item-width;
+
+      &--item {
+        color: #fff;
+        padding-left: 30px;
+        text-decoration: none;
+
+        &:hover {
+          color: $hover-color;
+          text-decoration: underline;
+        }
+      }
+
+      &--active {
+        color: $hover-color;
+      }
+    }
+
+    &__title {
+      text-align: center;
+      width: $nav-item-width;
+
+      &--item {
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover {
+          color: $hover-color;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  & .fab {
+    margin-right: $icon-margin;
+  }
+
+  & .fas {
+    margin-right: $icon-margin;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .jn-header {
+    & .jn-navigator {
+      &__link {
+        &--item {
+          padding-left: 10px;
+        }
+
+        &--title {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .jn-header {
+    & .jn-navigator {
+      &__action {
+        display: none;
+      }
+
+      &__link {
+        width: 50%;
+      }
+
+      &__title {
+        padding-left: $nav-padding;
+        width: 50%;
+      }
+    }
+  }
+}

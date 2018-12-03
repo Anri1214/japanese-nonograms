@@ -1,0 +1,22 @@
+@import '../../stylesheets/constants';
+@import '../../stylesheets/mixins';
+
+.jn-footer {
+  background-color: $nav-background;
+
+  & .jn-copyright {
+    @include flex();
+
+    background-color: $app-background;
+    border-radius: $app-border-radius $app-border-radius 0 0;
+    bottom: 0;
+    color: #fff;
+    flex-direction: row;
+    height: $nav-height;
+    width: 100%;
+  }
+
+  & .fas {
+    margin-right: $icon-margin;
+  }
+}

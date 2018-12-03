@@ -1,0 +1,21 @@
+@import '../../stylesheets/constants';
+@import '../../stylesheets/mixins';
+
+.jn-main {
+  background-color: $nav-background;
+
+  & .jn-content {
+    border-left: $app-border-size;
+    border-right: $app-border-size;
+    height: $main-height;
+    margin: 0 $main-margin;
+
+    & .jn-container {
+      @include flex();
+
+      background: url('/wallpaper.jpg') no-repeat center center / cover ;
+      height: $game-height;
+      width: 100%;
+    }
+  }
+}

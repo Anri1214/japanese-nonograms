@@ -1,0 +1,73 @@
+@import '../../stylesheets/constants';
+@import '../../stylesheets/mixins';
+
+.jn-game {
+  &-table {
+    border: $table-border-bold;
+    border-spacing: 0;
+    table-layout: fixed;
+
+    &__body {
+      display: block;
+      max-height: calc(#{$game-height} - 50px);
+      max-width: calc(100vw - #{$main-margin} * 2 - #{$app-border-weight} * 2 - 50px);
+      min-height: 85px;
+      overflow: auto;
+    }
+
+    &__data {
+      background-color: #e7e0b3;
+      border: $table-border-normal;
+      font-weight: bold;
+      min-width: $nonogram-size;
+      padding: 3px;
+
+      &--bottom {
+        border-bottom: $table-border-bold;
+        vertical-align: bottom;
+
+        &-val:not(:last-child) {
+          display: block;
+          padding-bottom: 3px;
+        }
+      }
+
+      &--col {
+        text-align: center;
+      }
+
+      &--nonogram {
+        font-weight: normal;
+        height: $nonogram-size;
+        text-align: center;
+        width: $nonogram-size;
+
+        &-black {
+          background-color: #000;
+        }
+
+        &-red {
+          background-color: #f00;
+        }
+
+        &-white {
+          background-color: #fff;
+        }
+      }
+
+      &--right {
+        border-right: $table-border-bold;
+        vertical-align: center;
+
+        &-val:not(:last-child) {
+          display: inline-block;
+          padding-right: 7px;
+        }
+      }
+
+      &--row {
+        text-align: right;
+      }
+    }
+  }
+}

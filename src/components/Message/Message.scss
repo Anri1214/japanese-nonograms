@@ -1,0 +1,46 @@
+@import '../../stylesheets/constants';
+@import '../../stylesheets/mixins';
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.jn-message {
+  @include flex();
+
+  background-image: $message-gradient;
+  border-top: $app-border-size;
+  height: $message-height;
+  text-shadow: 1px 1px 1px black;
+
+  &__title {
+    margin: 0;
+    text-align: center;
+
+    &--complete {
+      color: #fff;
+      font-size: 32px;
+    }
+
+    &--error {
+      animation: blinker 1s linear infinite;
+      color: $hover-color;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .jn-message {
+    &__title {
+      &--complete {
+        font-size: 20px;
+      }
+
+      &--error {
+
+      }
+    }
+  }
+}
