@@ -6,7 +6,7 @@ import { history, store } from './store/store';
 import './index.scss';
 import App from 'components/App';
 import * as serviceWorker from './serviceWorker';
-console.error(history);
+
 ReactDOM.render(
   <Provider store={ store }>
     <ConnectedRouter history={ history }>

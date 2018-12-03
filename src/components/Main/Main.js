@@ -22,7 +22,6 @@ class Main extends Component {
           <Settings />
           <Switch>
             <Route exact path="/" render={ () => <Redirect to="/game" /> }/>
-            <Route exact path="/japanese-nonograms" render={ () => <Redirect to="/game" /> }/>
             <Route exact path="/about" component={ About } />
             <Route exact path="/help" component={ Help } />
             <Route exact path="/game" component={ Game } />
