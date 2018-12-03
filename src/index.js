@@ -9,7 +9,10 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <ConnectedRouter
+      basename={process.env.PUBLIC_URL}
+      history={history}
+    >
       <App />
     </ConnectedRouter>
   </Provider>,
