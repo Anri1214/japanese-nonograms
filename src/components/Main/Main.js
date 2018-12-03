@@ -23,7 +23,7 @@ class Main extends Component {
           <div
             className="jn-container"
             style={{
-              background: `url(${ process.env.PUBLIC_URL }wallpaper.jpg)`
+              background: `url(${ process.env.PUBLIC_URL }/wallpaper.jpg)`
             }}
           >
             <Switch>
