@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
-import { setGame } from '../../store/reducers/rootReducer';
+import { setGame, setMessage } from '../../store/reducers/rootReducer';
 import Game from '../../components/Game';
 
 /**
  * @const {Object} mapDispatchToProps - Redux action creator.
  */
 const mapDispatchToProps = {
-  setGame
+  setGame,
+  setMessage
 };
 
 /**

@@ -1,4 +1,5 @@
 const SET_GAME = 'SET_GAME';
+const SET_MESSAGE = 'SET_MESSAGE';
 const SET_SETTINGS = 'SET_SETTINGS';
 
 /**
@@ -11,8 +12,8 @@ export const setGame = (game, message) => {
   return {
     type: SET_GAME,
     payload: {
-      game: game,
-      message: message
+      game,
+      message
     }
   };
 };
@@ -27,9 +28,16 @@ export const setSettings = (game, settings) => {
   return {
     type: SET_SETTINGS,
     payload: {
-      game: game,
-      settings: settings
+      game,
+      settings
     }
+  };
+};
+
+export const setMessage = message => {
+  return {
+    type: SET_MESSAGE,
+    payload: { message }
   };
 };
 
@@ -63,6 +71,11 @@ export default (state = initialState, action) => {
         ...state,
         game: params.game,
         settings: params.settings
+      };
+    case SET_MESSAGE:
+      return {
+        ...state,
+        message: params.message,
       };
     default:
       return state;
