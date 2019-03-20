@@ -1,13 +1,13 @@
 {
-  "main.css": "/japanese-nonograms/static/css/main.dbcabaec.chunk.css",
-  "main.js": "/japanese-nonograms/static/js/main.c143b35a.chunk.js",
-  "main.js.map": "/japanese-nonograms/static/js/main.c143b35a.chunk.js.map",
-  "static/js/1.fb63cc03.chunk.js": "/japanese-nonograms/static/js/1.fb63cc03.chunk.js",
-  "static/js/1.fb63cc03.chunk.js.map": "/japanese-nonograms/static/js/1.fb63cc03.chunk.js.map",
+  "main.css": "/japanese-nonograms/static/css/main.c1736b1d.chunk.css",
+  "main.js": "/japanese-nonograms/static/js/main.c39ee27d.chunk.js",
+  "main.js.map": "/japanese-nonograms/static/js/main.c39ee27d.chunk.js.map",
+  "static/js/1.0c10d749.chunk.js": "/japanese-nonograms/static/js/1.0c10d749.chunk.js",
+  "static/js/1.0c10d749.chunk.js.map": "/japanese-nonograms/static/js/1.0c10d749.chunk.js.map",
   "runtime~main.js": "/japanese-nonograms/static/js/runtime~main.302f7128.js",
   "runtime~main.js.map": "/japanese-nonograms/static/js/runtime~main.302f7128.js.map",
-  "static/css/main.dbcabaec.chunk.css.map": "/japanese-nonograms/static/css/main.dbcabaec.chunk.css.map",
+  "static/css/main.c1736b1d.chunk.css.map": "/japanese-nonograms/static/css/main.c1736b1d.chunk.css.map",
   "index.html": "/japanese-nonograms/index.html",
-  "precache-manifest.b66e2cb76bf8739abedbb63f8f8b2815.js": "/japanese-nonograms/precache-manifest.b66e2cb76bf8739abedbb63f8f8b2815.js",
+  "precache-manifest.712359c6142a890d8fbdb89a8ea096c1.js": "/japanese-nonograms/precache-manifest.712359c6142a890d8fbdb89a8ea096c1.js",
   "service-worker.js": "/japanese-nonograms/service-worker.js"
 }
