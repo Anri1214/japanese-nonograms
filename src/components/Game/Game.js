@@ -12,46 +12,49 @@ class Game extends Component {
    */
   constructor (props) {
     super(props);
-    this.message = {
-      type: {
-        complete: 'complete',
-        error: 'error'
-      },
-      val: ''
+
+    this.state = {
+      game: props.game,
+      prevProsGame: props.game
     };
+
+    this.activeFillType = null;
+
+    this.checkGame = this.checkGame.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
+    this.onMouseDown = this.onMouseDown.bind(this);
+    this.lazyCheckGame = _.debounce(this.checkGame, 1000);
+  }
+
+  componentDidMount () {
+    document.addEventListener('mouseup', this.onMouseUp);
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('mouseup', this.onMouseUp);
+  }
+
+  static getDerivedStateFromProps (props, state) {
+    if (props.game !== state.prevProsGame) {
+      return {
+        game: props.game,
+        prevProsGame: props.game
+      };
+    }
+    return null;
   }
 
   /**
    * Validate and update game data fields.
    * @param {Array} data - Current game data.
    */
-  checkGame (data) {
-    const clear = [];
-    const msg = this.message;
-    const template = this.props.settings.data;
+  checkGame () {
+    const template = Object.entries(this.props.settings.data);
+    const check = Object.entries(this.state.game).filter(entry => entry[1] === 1);
 
-    msg.val = '';
-
-    _.forEach(data, (row, index) => {
-      clear[index] = _.cloneDeep(row);
-
-      if (msg.val !== msg.type.error) {
-        _.forEach(row, (val, key) => {
-          const match = template[index][key];
-
-          clear[index][key] = val < 0 ? 0 : val;
-
-          if (val > 0 && match !== val || val < 0 && match === 1) {
-            msg.val = msg.type.error;
-
-            return false;
-          }
-        });
-      }
-    });
-
-    msg.val = _.isEqual(template, clear) ? msg.type.complete : msg.val;
-    this.props.setGame(data, msg.val);
+    if (_.isEqual(template, check)) {
+      this.props.setMessage('complete');
+    }
   }
 
   /**
@@ -69,21 +72,52 @@ class Game extends Component {
    * @param {int} row - Game data row index.
    * @param {int} col - Game data col index.
    */
-  onClick (event, row, col) {
-    const data = _.cloneDeep(this.props.game);
-    const val = data[row][col];
 
-    switch (event.type) {
-      case 'click':
-        data[row][col] = val === 1 ? 0 : 1;
-        break;
-      case 'contextmenu':
-        event.preventDefault();
-        data[row][col] = val > -1 ? -1 : 0;
-        break;
+  onMouseDown (event) {
+    if (event.target.id) {
+      const [row, col] = event.target.id.split('_');
+      const value = this.state.game[`${row}_${col}`];
+
+      switch (event.buttons) {
+        case 1:
+          this.activeFillType = value === 1 ? 0 : 1;
+          break;
+        case 2:
+          this.activeFillType = value > -1 ? -1 : 0;
+          break;
+        default:
+          break;
+      }
+
+      if (this.activeFillType !== null) {
+        this.updateGame(row, col);
+      }
     }
+  }
 
-    this.checkGame(data);
+  onMouseOver (event) {
+    if (event.target.id && this.activeFillType !== null) {
+      const [row, col] = event.target.id.split('_');
+
+      this.updateGame(row, col);
+    }
+  }
+
+  onMouseUp () {
+    this.activeFillType = null;
+    this.props.setGame(this.state.game);
+    this.lazyCheckGame();
+  }
+
+  updateGame (row, col) {
+    if (this.state.game[`${row}_${col}`] !== this.activeFillType) {
+      this.setState(prevState => ({
+        game: {
+          ...prevState.game,
+          [`${row}_${col}`]: this.activeFillType
+        }
+      }));
+    }
   }
 
   /**
@@ -91,13 +125,18 @@ class Game extends Component {
    * @return {XML}
    */
   render () {
-    const { game, settings } = this.props;
+    const { game } = this.state;
+    const { settings } = this.props;
 
     return (
       <section className="jn-container jn-game">
         {
           settings.data ? <table className="jn-game-table">
-            <tbody className="jn-game-table__body">
+            <tbody
+              onMouseDown={this.onMouseDown}
+              className="jn-game-table__body"
+              onContextMenu={e => e.preventDefault()}
+            >
               <tr>
                 <td
                   className={
@@ -136,20 +175,20 @@ class Game extends Component {
                 }
               </tr>
               {
-                _.map(game, (row, index) => {
+                [...Array(settings.sizeX)].map((i, row) => {
                   return (
-                    <tr key={ index }>
+                    <tr key={row}>
                       <td
-                        style={{ minWidth: `${ settings.width * 17 }px` }}
+                        style={{ minWidth: settings.width * 17 }}
                         className={
                           `jn-game-table__data
                           jn-game-table__data--row
                           jn-game-table__data--right
-                          ${ this.isLine(index) && 'jn-game-table__data--bottom' }`
+                          ${ this.isLine(row) && 'jn-game-table__data--bottom' }`
                         }
                       >
                         {
-                          _.map(settings.rows[index], (val, key) => {
+                          _.map(settings.rows[row], (val, key) => {
                             return (
                               <span
                                 key={ key }
@@ -162,21 +201,25 @@ class Game extends Component {
                         }
                       </td>
                       {
-                        _.map(row, (val, key) => {
+                        [...Array(settings.sizeY)].map((i, col) => {
                           return (
                             <td
-                              key={ key }
-                              onClick={ event => this.onClick(event, index, key) }
-                              onContextMenu={ event => this.onClick(event, index, key) }
+                              key={col}
+                              id={`${row}_${col}`}
+                              onMouseOver={event => this.onMouseOver(event, row, col)}
                               className={
                                 `jn-game-table__data
                                 jn-game-table__data--nonogram
-                                jn-game-table__data--nonogram-${ val > 0 ? 'black' : 'white' }
-                                ${ this.isLine(index) && 'jn-game-table__data--bottom' }
-                                ${ this.isLine(key) && 'jn-game-table__data--right' }`
+                                jn-game-table__data--nonogram-${
+                                  game[`${row}_${col}`] > 0
+                                    ? 'black'
+                                    : 'white'
+                                  }
+                                ${this.isLine(row) && 'jn-game-table__data--bottom'}
+                                ${this.isLine(col) && 'jn-game-table__data--right'}`
                               }
                             >
-                              { val === -1 ? 'X' : '' }
+                              {game[`${row}_${col}`] ? 'X' : ''}
                             </td>
                           );
                         })
